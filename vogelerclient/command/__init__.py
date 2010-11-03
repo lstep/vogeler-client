@@ -126,8 +126,9 @@ def main():
         config = ConfigParser.ConfigParser()
         config.read(os.path.join(CONFDIR,MODULENAME+'.conf'))
         config.set('main','local_node_name', node_name)
-        with open(os.path.join(CONFDIR,MODULENAME+'.conf'), 'wb') as configfile:
-            config.write(configfile)
+        configfile = open(os.path.join(CONFDIR,MODULENAME+'.conf'), 'wb')
+        config.write(configfile)
+        configfile.close()
         print "The local node name has been set to %s (FQDN). If that's not what you want" % node_name
         print "Please change the variable 'local_node_name' in %s" % os.path.join(CONFDIR,MODULENAME+'.conf')
 

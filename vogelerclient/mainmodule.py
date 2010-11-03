@@ -39,7 +39,9 @@ class Manager(object):
             conn = amqp.Connection(host=h, port=pt,
                                    userid=u, password=p,
                                    virtual_host=vh,
+                                   ssl=self.config.getboolean('main','use_amqp_ssl'),
                                    insist=False)
+
             ch = conn.channel()
             ch.access_request(vh,active=True, read=True, write=True)
         except Exception,e:
