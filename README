@@ -1,0 +1,5 @@
+= Introduction =
+
+This repository is a fork of John E. Vincent (lusis.org+github.com at gmail.com)'s project Vogeler. It is as of now
+a 'lite version'.
+The prinicpal difference being that each portion (runner,client,server) is separated in a different repository.
