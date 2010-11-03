@@ -10,6 +10,11 @@ import socket
 # Configure Logs
 log = logging.getLogger('vogeler-client')
 
+# Correct problem with urlparse in python < 2.6
+SCHEME="amqp"
+urlparse.uses_netloc.append(SCHEME)
+urlparse.uses_fragment.append(SCHEME)
+
 try:
     import simplejson as json
 except ImportError:
