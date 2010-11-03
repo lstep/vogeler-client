@@ -36,7 +36,7 @@ class Manager(object):
 
         log.debug('Will connect to AMQP server at %s', dsn)
         try:
-            conn = amqp.Connection(host=h, port=pt,
+            conn = amqp.Connection(host="%s:%d" % (h,pt),
                                    userid=u, password=p,
                                    virtual_host=vh,
                                    ssl=self.config.getboolean('main','use_amqp_ssl'),
