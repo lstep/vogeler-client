@@ -97,13 +97,13 @@ class Manager(object):
         # Run plugin HERE
         #
         if request.has_key('myrequest'):
-            req = request['myrequest']
+            req = 'plugin_' + request['myrequest']
             if self.config.has_section(req):
                 command = self.config.get(req,'command')
                 plugin_format = self.config.get(req,'format')
                 message = subprocess.Popen(shlex.split(command), stdout = subprocess.PIPE).communicate()
 
-                results = {'syskey': self.local_node_name, 'message': message[0], 'format': plugin_format}
+                results = {'syskey': self.local_node_name, req: message[0], 'format': plugin_format}
                 self.message(results)
                 log.debug('Results: %s' % results)
             else:
